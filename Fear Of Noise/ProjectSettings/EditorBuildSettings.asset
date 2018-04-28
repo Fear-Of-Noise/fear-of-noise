@@ -5,18 +5,30 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: Assets/Scenes/Top.unity
+    guid: e379a919401991546949546213ace18a
+  - enabled: 0
+    path: Assets/Scenes/Menu.unity
+    guid: 5b95dc38543794d4a87ebccf84cfc6aa
+  - enabled: 0
+    path: Assets/Scenes/2.5d.unity
+    guid: 7a52195ffd222644f9fa4d5097f917cf
   - enabled: 1
-    path: Assets/Scenes/Title.unity
-    guid: e18357b2638980041a6dfadc8ebb5647
-  - enabled: 1
-    path: Assets/Scenes/LoadingScene.unity
-    guid: 446c53a6498d9f44cbbe5a3cceb75574
-  - enabled: 1
-    path: Assets/Scenes/DayJungle.unity
-    guid: 6abdc4c8ab9d78446b3700709c8797c3
-  - enabled: 1
-    path: Assets/Scenes/GameOver.unity
-    guid: f1ff2280be95e284082533c1e96c240a
-  - enabled: 1
-    path: Assets/Scenes/Town.unity
-    guid: 1590f58952af5bf4686f2f8315fdb432
+    path: Assets/Scenes/Tap.unity
+    guid: fd7b9efcbfa387d48bb64fdb0dc46dc5
