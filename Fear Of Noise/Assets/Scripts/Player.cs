@@ -26,7 +26,8 @@ public class Player : MonoBehaviour {
     }
 
     void Update(){
-        
+
+        // 
         if (CameraControll.GetIsEventTime()) {
             agent.SetDestination(gameObject.transform.position);
             return;
