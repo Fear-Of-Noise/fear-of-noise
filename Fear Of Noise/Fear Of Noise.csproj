@@ -311,11 +311,11 @@
     <Compile Include="Assets\Scripts\CanvasMessage.cs" />
     <Compile Include="Assets\Scripts\Door.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\GameOverScene.cs" />
     <Compile Include="Assets\Scripts\Goal.cs" />
     <Compile Include="Assets\Scripts\Item\Key.cs" />
     <Compile Include="Assets\Scripts\ItemSlot.cs" />
     <Compile Include="Assets\Scripts\Message.cs" />
-    <Compile Include="Assets\Scripts\OnTapedPosition.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\ScreenClick.cs" />
     <Compile Include="Assets\Scripts\StageSelect.cs" />

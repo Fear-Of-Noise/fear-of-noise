@@ -10,11 +10,9 @@ public class CameraControll : MonoBehaviour {
 	private static float eventTime = 0f;
 	private static GameObject target;
     private const float CENTER_MARGIN= 3f;
-    private const float RAY_MAX_DISTANCE = 300f;
 
 
-
-    void Start () {
+	void Start () {
 		_player = GameObject.FindGameObjectWithTag("Player");
 
 		if(_player != null){
@@ -22,46 +20,12 @@ public class CameraControll : MonoBehaviour {
 		}
 	}
 
-    void sendTapedGroundPosToPlayer(Vector3 tapPos)
-    {
+	void Update () {
 
-        tapPos.z = 10.0f;
-        Vector3 tapPosWP = Camera.main.ScreenToWorldPoint(tapPos);
-
-        Vector3 angle = (tapPosWP - transform.position).normalized;
-
-        Ray ray = new Ray(transform.position, angle);
-        RaycastHit hit;
-        int layerMask = (1 << LayerMask.NameToLayer("Ground"));
-        if (Physics.Raycast(ray, out hit, RAY_MAX_DISTANCE, layerMask))
-        {
-            Player playerC = _player.GetComponent<Player>();
-            playerC.setDestination(hit.point);
-        }
-
-    }
-
-
-    void Update()
-    {
-
-        if (Application.isEditor)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Vector3 mousePos = Input.mousePosition;
-                sendTapedGroundPosToPlayer(mousePos);
-            }
-        }
-        else
-        {
-            if (Input.touchCount > 0)
-            {
-                Touch[] touches = Input.touches;
-                Vector3 touchPos = touches[0].position;
-                sendTapedGroundPosToPlayer(touchPos);
-            }
-        }
+		if(isEventTime){
+			cameraEvent ();
+			return;
+		}
 
         Vector3 cameraPos = this.transform.position;
         Vector3 plPos = _player.transform.position;
@@ -82,6 +46,10 @@ public class CameraControll : MonoBehaviour {
 		eventTime = time;
 		isEventTime = true;
 	}
+
+    public static bool GetIsEventTime() {
+        return isEventTime;
+    }
 
 	private void cameraEvent(){
 		Vector3 targetPos = target.transform.position;

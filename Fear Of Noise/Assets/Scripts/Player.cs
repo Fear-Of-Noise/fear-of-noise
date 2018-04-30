@@ -5,70 +5,72 @@ public class Player : MonoBehaviour {
 
     private const float MOVE_SPEED = 6f;
     private const float MOVE_MARGIN = 1;
+    private const float RAY_MAX_DISTANCE = 300f;
+
     private float moveX = 0f;
     private float moveZ = 0f;
     private Rigidbody rb;
+    public Camera _mainCamera;
 
 	private bool isWait = false;
 	private float waitTime = 0f;
-
     private bool toDestination = false;
     private Vector3 destination = new Vector3();
-
     private bool isDirLeft = true;
-
-    private NavMeshAgent agent;
-    private Ray ray;
 
     void Start(){
         rb = GetComponent<Rigidbody>();
-        agent = GetComponent<NavMeshAgent>();
     }
 
-    void Update(){
-        move();
+    void sendTapedGroundPos(Vector3 tapPos)
+    {
 
-        if (Input.GetMouseButtonDown(0))
+        tapPos.z = 10.0f;
+        Vector3 tapPosWP = Camera.main.ScreenToWorldPoint(tapPos);
+
+        Vector3 angle = (tapPosWP - transform.position).normalized;
+
+        Ray ray = _mainCamera.ScreenPointToRay(tapPos);
+        RaycastHit hit;
+        int layerMask = (1 << LayerMask.NameToLayer("Ground"));
+        if (Physics.Raycast(ray, out hit, RAY_MAX_DISTANCE, layerMask))
         {
-            RaycastHit hit;
+            setDestination(hit.point);
+        }
 
+    }
+
+
+
+    void Update()
+    {
+
+        if(CameraControll.GetIsEventTime()){
+            rb.velocity = new Vector3();
+            return;
+        }
+
+        if (Application.isEditor)
+        {
             if (Input.GetMouseButtonDown(0))
             {
-                // マウスの位置からRayを発射して、
-                ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                // 物体にあたったら、
-
-                int layerMask = 1 << 8;
-                if (Physics.Raycast(ray, out hit, 100f,layerMask))
-                {
-                    Debug.Log(hit.collider.tag);
-                    if (hit.collider.tag == "Ground") { 
-                    // その場所に、Nav Mesh Agentをアタッチしたオブジェクトを移動させる
-                    agent.SetDestination(hit.point);
-                }
-
-                }
+                Vector3 mousePos = Input.mousePosition;
+                sendTapedGroundPos(mousePos);
             }
-            //if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out hit, 100))
-            //{
-            //    Debug.Log(hit);
-            //    Debug.Log(hit.point);
-            //    gameObject.transform.position = new Vector3(hit.point.x, -5.5f, hit.point.z);
-            //}
         }
-        /*
-		if(waitTime<=0){
-			waitTime = 0f;
-			isWait = false;
-		}
-		if (isWait) {
-			waitTime -= 0.01666f;
-			return;
-		}
+        else
+        {
+            if (Input.touchCount > 0)
+            {
+                Touch[] touches = Input.touches;
+                Vector3 touchPos = touches[0].position;
+                sendTapedGroundPos(touchPos);
+            }
+        }
 
-        moveX = Input.GetAxis("Horizontal") * MOVE_SPEED;
-        moveZ = Input.GetAxis("Vertical") * MOVE_SPEED;
-        */
+        move();
+
+
     }
 
 
@@ -79,9 +81,10 @@ public class Player : MonoBehaviour {
 
         Vector3 rotateVec = new Vector3();
         if (isDirLeft){
-            rotateVec = new Vector3(20f, 0f, 0f); ;
-        }else{
             rotateVec = new Vector3(-20f, 180f, 0f);
+        }
+        else{
+            rotateVec = new Vector3(20f, 0f, 0f);
         }
 
         rb.velocity = new Vector3(moveX, rb.velocity.y, moveZ);
