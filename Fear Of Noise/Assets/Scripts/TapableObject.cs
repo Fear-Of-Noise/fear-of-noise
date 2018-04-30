@@ -20,7 +20,6 @@ public class TapableObject : MonoBehaviour{
     public void OnTaped(){
         Player pl = _player.GetComponent<Player>();
         pl.setDestination(this.gameObject.transform.position);
-        Debug.Log(this.gameObject.name+"がタップされました。");
         return ;
     }
 }

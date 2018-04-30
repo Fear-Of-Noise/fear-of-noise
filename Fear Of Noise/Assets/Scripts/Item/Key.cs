@@ -11,25 +11,9 @@ public class Key : MonoBehaviour {
     private Message messageWhenGot = new Message(new string[] { "鍵を入手しました。" , "メッセージを閉じます▼" });
 
     void Start () {
-
-       
-
-
-
         canvasMessage = GameObject.Find("Canvas_Message").GetComponent<CanvasMessage>();
         itemSlot = GameObject.FindGameObjectWithTag("Item_Slot").GetComponent<ItemSlot>();
     }
-
-    /*
-    void OnCollisionEnter(Collision col)
-    {
-        if (col.gameObject.tag == "Player")
-        {
-            itemSlot.SetItemSlot(gameObject.GetComponent<SpriteRenderer>().sprite);
-            Destroy(gameObject);
-        }
-    }
-    */
 
     private void OnTriggerEnter(Collider col)
     {

@@ -281,6 +281,7 @@
     <Compile Include="Assets\Scripts\StageSelect.cs" />
     <Compile Include="Assets\Scripts\StartButton.cs" />
     <Compile Include="Assets\Scripts\TapableObject.cs" />
+    <Compile Include="Assets\Scripts\OnTapedPosition.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

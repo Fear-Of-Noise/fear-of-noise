@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 public class Player : MonoBehaviour {
 
@@ -15,14 +16,27 @@ public class Player : MonoBehaviour {
     private Vector3 destination = new Vector3();
 
     private bool isDirLeft = true;
+    private NavMeshAgent agent;
 
     void Start(){
         rb = GetComponent<Rigidbody>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
     void Update(){
         move();
 
+        if (Input.GetMouseButtonDown(0))
+        {
+            RaycastHit hit;
+
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+            {
+                Debug.Log(hit);
+                Debug.Log(hit.point);
+                gameObject.transform.position = new Vector3(hit.point.x, -5.5f, hit.point.z);
+            }
+        }
         /*
 		if(waitTime<=0){
 			waitTime = 0f;
