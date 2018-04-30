@@ -16,7 +16,9 @@ public class Player : MonoBehaviour {
     private Vector3 destination = new Vector3();
 
     private bool isDirLeft = true;
+
     private NavMeshAgent agent;
+    private Ray ray;
 
     void Start(){
         rb = GetComponent<Rigidbody>();
@@ -30,12 +32,29 @@ public class Player : MonoBehaviour {
         {
             RaycastHit hit;
 
-            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
+            if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log(hit);
-                Debug.Log(hit.point);
-                gameObject.transform.position = new Vector3(hit.point.x, -5.5f, hit.point.z);
+                // マウスの位置からRayを発射して、
+                ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                // 物体にあたったら、
+
+                int layerMask = 1 << 8;
+                if (Physics.Raycast(ray, out hit, 100f,layerMask))
+                {
+                    Debug.Log(hit.collider.tag);
+                    if (hit.collider.tag == "Ground") { 
+                    // その場所に、Nav Mesh Agentをアタッチしたオブジェクトを移動させる
+                    agent.SetDestination(hit.point);
+                }
+
+                }
             }
+            //if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out hit, 100))
+            //{
+            //    Debug.Log(hit);
+            //    Debug.Log(hit.point);
+            //    gameObject.transform.position = new Vector3(hit.point.x, -5.5f, hit.point.z);
+            //}
         }
         /*
 		if(waitTime<=0){
