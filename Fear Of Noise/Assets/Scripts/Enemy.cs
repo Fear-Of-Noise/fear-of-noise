@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour {
 
@@ -74,7 +75,7 @@ public class Enemy : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col){
 		if(targetChara != null && col.gameObject.tag == "Player"){
-			Debug.Log ("ゲームオーバー");
+            SceneManager.LoadScene("GameOver");
 			targetChara = col.gameObject;
 		}
 	}

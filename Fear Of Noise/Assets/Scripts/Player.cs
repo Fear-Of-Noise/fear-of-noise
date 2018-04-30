@@ -26,6 +26,12 @@ public class Player : MonoBehaviour {
     }
 
     void Update(){
+        
+        if (CameraControll.GetIsEventTime()) {
+            agent.SetDestination(gameObject.transform.position);
+            return;
+        }
+
         move();
 
         if (Input.GetMouseButtonDown(0))
@@ -41,7 +47,6 @@ public class Player : MonoBehaviour {
                 int layerMask = 1 << 8;
                 if (Physics.Raycast(ray, out hit, 100f,layerMask))
                 {
-                    Debug.Log(hit.collider.tag);
                     if (hit.collider.tag == "Ground") { 
                     // その場所に、Nav Mesh Agentをアタッチしたオブジェクトを移動させる
                     agent.SetDestination(hit.point);
