@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio for Mac
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fear Of Noise", "Fear Of Noise.csproj", "{796EEE9A-9DA1-448E-47BD-B883EAF7C5E1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fear Of Noise", "Assembly-CSharp.csproj", "{7E0C8BCB-8540-7D0D-2F65-8AB85809A81D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{796EEE9A-9DA1-448E-47BD-B883EAF7C5E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{796EEE9A-9DA1-448E-47BD-B883EAF7C5E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{796EEE9A-9DA1-448E-47BD-B883EAF7C5E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{796EEE9A-9DA1-448E-47BD-B883EAF7C5E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E0C8BCB-8540-7D0D-2F65-8AB85809A81D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E0C8BCB-8540-7D0D-2F65-8AB85809A81D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E0C8BCB-8540-7D0D-2F65-8AB85809A81D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E0C8BCB-8540-7D0D-2F65-8AB85809A81D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

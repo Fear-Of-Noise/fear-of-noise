@@ -47,6 +47,10 @@ public class CameraControll : MonoBehaviour {
 		isEventTime = true;
 	}
 
+    public static bool GetIsEventTime() {
+        return isEventTime;
+    }
+
 	private void cameraEvent(){
 		Vector3 targetPos = target.transform.position;
 		Vector3 newPosition = this.transform.position;
