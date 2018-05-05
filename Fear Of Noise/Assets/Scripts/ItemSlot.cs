@@ -27,9 +27,8 @@ public class ItemSlot : MonoBehaviour {
     public void UseItemSlot()
     {
         if (itemSlot1.GetComponent<Image>().enabled)
-        {
-            Sprite sprite = new Sprite();
-            itemSlot1.GetComponent<Image>().sprite = sprite;
+        { 
+            itemSlot1.GetComponent<Image>().sprite = null;
             itemSlot1.GetComponent<Image>().enabled = false;
         }
     }

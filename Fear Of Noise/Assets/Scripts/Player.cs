@@ -81,10 +81,10 @@ public class Player : MonoBehaviour {
 
         Vector3 rotateVec = new Vector3();
         if (isDirLeft){
-            rotateVec = new Vector3(-20f, 180f, 0f);
+            rotateVec = new Vector3(20f, 0f, 0f);
         }
         else{
-            rotateVec = new Vector3(20f, 0f, 0f);
+            rotateVec = new Vector3(-20f, 180f, 0f);
         }
 
         rb.velocity = new Vector3(moveX, rb.velocity.y, moveZ);
